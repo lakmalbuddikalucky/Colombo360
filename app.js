@@ -58,7 +58,7 @@ colombo360.controller('AppController', ['$scope','$window','$http','ModalService
         $scope.visibility.upload = false;
         $scope.visibility.viewPhotosphere = false;
         console.log("Visibility", $scope.visibility);
-        location.href = "/Colombo_360/Colombo_360/index.html#/feed";
+        location.href = "/Colombo_360/Colombo360/index.html#/feed";
     }
 
     $scope.showProfile = function(){
@@ -68,7 +68,7 @@ colombo360.controller('AppController', ['$scope','$window','$http','ModalService
         $scope.visibility.upload = false;
         $scope.visibility.viewPhotosphere = false;
         console.log("Visibility", $scope.visibility);
-        location.href = "/Colombo_360/Colombo_360/index.html#/profile";
+        location.href = "/Colombo_360/Colombo360/index.html#/profile";
     }
 
     $scope.showMap = function(){
@@ -78,7 +78,7 @@ colombo360.controller('AppController', ['$scope','$window','$http','ModalService
         $scope.visibility.upload = false;
         $scope.visibility.viewPhotosphere = false;
         console.log("Visibility", $scope.visibility);
-        location.href = "/Colombo_360/Colombo_360/index.html#/map";
+        location.href = "/Colombo_360/Colombo360/index.html#/map";
     }
 
     $scope.showUploadPage = function(){
@@ -87,7 +87,7 @@ colombo360.controller('AppController', ['$scope','$window','$http','ModalService
         $scope.visibility.map = false;
         $scope.visibility.upload = true;
         $scope.visibility.viewPhotosphere = false;
-        location.href = "/Colombo_360/Colombo_360/index.html#/upload";
+        location.href = "/Colombo_360/Colombo360/index.html#/upload";
     }
 
     $scope.openPhotosphere = function(item){
@@ -100,7 +100,7 @@ colombo360.controller('AppController', ['$scope','$window','$http','ModalService
         $scope.visibility.upload = false;
         $scope.visibility.viewPhotosphere = true;
         console.log("Visibility", $scope.visibility);
-        location.href = "/Colombo_360/Colombo_360/index.html#/viewPhotosphere";
+        location.href = "/Colombo_360/Colombo360/index.html#/viewPhotosphere";
     }
     //To get the items in the news feed
     $scope.getNewsfeedItems = function(){
@@ -198,7 +198,7 @@ colombo360.controller('LoginController', ['$scope','$window','$http','ModalServi
 
     $scope.Enter = function(){
         setTimeout(function(){
-            location.href = "/Colombo_360/Colombo_360/index.html#/feed";
+            location.href = "/Colombo_360/Colombo360/index.html#/feed";
         },500);
     }
 }]);
