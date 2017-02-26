@@ -10,6 +10,7 @@ colombo360.config(['$routeProvider','$locationProvider',function($routeProvider,
         .when('/map',{templateUrl:'map.html'})
         .when('/feed',{templateUrl:'feed.html'})
         .when('/viewPhotosphere', {templateUrl:'viewPhotosphere.html'})
+        .when('/upload', {templateUrl:'upload.html'})
         .otherwise({redirectTo: '/'});
 }]);
 
@@ -52,41 +53,18 @@ colombo360.controller('AppController', ['$scope','$window','$http','ModalService
     }
 
     $scope.showMainContent = function() {
-        $scope.visibility.mainContent = true;
-        $scope.visibility.profile = false;
-        $scope.visibility.map = false;
-        $scope.visibility.upload = false;
-        $scope.visibility.viewPhotosphere = false;
-        console.log("Visibility", $scope.visibility);
         location.href = "/Colombo_360/Colombo360/index.html#/feed";
     }
 
     $scope.showProfile = function(){
-        $scope.visibility.mainContent = false;
-        $scope.visibility.profile = true;
-        $scope.visibility.map = false;
-        $scope.visibility.upload = false;
-        $scope.visibility.viewPhotosphere = false;
-        console.log("Visibility", $scope.visibility);
         location.href = "/Colombo_360/Colombo360/index.html#/profile";
     }
 
     $scope.showMap = function(){
-        $scope.visibility.mainContent = false;
-        $scope.visibility.profile = false;
-        $scope.visibility.map = true;
-        $scope.visibility.upload = false;
-        $scope.visibility.viewPhotosphere = false;
-        console.log("Visibility", $scope.visibility);
         location.href = "/Colombo_360/Colombo360/index.html#/map";
     }
 
     $scope.showUploadPage = function(){
-        $scope.visibility.mainContent = false;
-        $scope.visibility.profile = false;
-        $scope.visibility.map = false;
-        $scope.visibility.upload = true;
-        $scope.visibility.viewPhotosphere = false;
         location.href = "/Colombo_360/Colombo360/index.html#/upload";
     }
 
@@ -94,12 +72,6 @@ colombo360.controller('AppController', ['$scope','$window','$http','ModalService
         $scope.photosphereClicked = true;
         $scope.currentPhotosphere = "./img/photosphere/"+item.photo_id;
         console.log("Current photosphere", $scope.currentPhotosphere);
-        $scope.visibility.mainContent = false;
-        $scope.visibility.profile = false;
-        $scope.visibility.map = false;
-        $scope.visibility.upload = false;
-        $scope.visibility.viewPhotosphere = true;
-        console.log("Visibility", $scope.visibility);
         location.href = "/Colombo_360/Colombo360/index.html#/viewPhotosphere";
     }
     //To get the items in the news feed
