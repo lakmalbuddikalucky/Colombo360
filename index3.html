@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html ng-app="colombo360">
+
+<head>
+    <title>Colombo 360</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" href="img/favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style/bootstrap.min.css">
+    <link rel="stylesheet" href="style/font-awesome.min.css">
+    <link rel="stylesheet" href="style/icon.css">
+    <link rel="stylesheet" href="style/loader.css">
+    <link rel="stylesheet" href="style/idangerous.swiper.css">
+    <link rel="stylesheet" href="style/jquery-ui.css">
+    <link rel="stylesheet" href="style/stylesheet.css">
+
+    <script src="script/jquery-2.1.4.min.js"></script>
+    <script src="script/jquery-ui.min.js"></script>
+    <script src="script/bootstrap.min.js"></script>
+    <script src="script/idangerous.swiper.min.js"></script>
+    <script src="script/jquery.mixitup.js"></script>
+    <script src="script/jquery.viewportchecker.min.js"></script>
+    <script src="script/filters.js"></script>
+    <script src="script/global.js"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-resource.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.4.2/angular-ui-router.js"></script>-->
+    <script src="script/angular.js"></script>
+    <script src="script/angular-route.js"></script>
+    <script src="script/angular-resource.js"></script>
+    <script src="script/angular-ui-router.js"></script>
+    <script src="script/ui-bootstrap-tpls-2.4.0.min.js"></script>
+    <script src="script/angular-modal-service.js"></script>
+
+    <script src="./app.js"></script>
+    <script src="script/aframe.min.js"></script>
+    <!--[if lt IE 10]>
+    <link rel="stylesheet" type="text/css" href="style/ie-9.css"/>
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body ng-controller="AppController">
+<!-- THE LOADER -->
+
+<div class="be-loader">
+    <div class="spinner">
+        <img src="img/colombo360_logo.png" style="width: 100px; height: 70px; margin-top:-15px">
+        <p class="circle">
+                  <span class="ouro">
+                    <span class="left"><span class="anim"></span></span>
+                    <span class="right"><span class="anim"></span></span>
+                  </span>
+        </p>
+    </div>
+</div>
+
+<header>
+    <div class="container-fluid custom-container">
+        <div class="row no_row row-header">
+            <div class="brand-be">
+
+            </div>
+        </div>
+    </div>
+    <ul class="nav nav-tabs">
+        <li><a ng-click="showMainContent()" style="width: 30%;">Home</a></li> <!--href="#/"-->
+        <li><a ng-click="showProfile()" style="width: 30%">Profile</a></li> <!--href=#/profile"-->
+        <li><a ng-click="showMap()" style="width: 30%">Explore</a></li> <!--href="#/map"-->
+        <a ng-click="showMainContent()">
+            <img class="logo-c active be_logo" src="img/colombo360_logo.png" alt="logo"
+                 style="width: 50px; height: 35px;float: right">
+        </a>
+    </ul>
+</header>
+
+<div id="content-block">
+    <div class="container-fluid custom-container">
+        <!--Shows the MAIN FEED PAGE-->
+        <div class="row" ng-show="visibility.mainContent">
+            <div class="col-md-2 left-feild">
+                <form action="./" class="input-search">
+                    <input type="text" required="" placeholder="Enter keyword">
+                    <i class="fa fa-search"></i>
+                    <input type="submit" value="">
+                </form>
+            </div>
+
+            <div class="col-md-10">
+                <div id="container-mix" class="row _post-container_" ng-if="newsFeedLoaded">
+                    <div class="category-1 mix custom-column-5" ng-repeat="item in newsfeedItems">
+                        <div class="be-post">
+                            <a href="" class="be-img-block" ng-click="openPhotosphere(item)">
+                                <img src="./img/display_img/{{item.photo_id}}" alt="omg">
+                            </a>
+                            <a href="" class="be-post-title">{{item.name}}</a>
+                            <span>
+                                <a href="" class="be-post-tag">Interaction Design</a>,
+                                <a href="" class="be-post-tag">UI/UX</a>,
+                                <a href="" class="be-post-tag">Web Design</a>
+                            </span>
+                            <div class="author-post">
+                                <img src="img/a1.png" alt="" class="ava-author">
+                                <span>by <a href="page1.html">{{item.user_name}}</a></span>
+                            </div>
+                            <div class="info-block">
+                                <span><i class="fa fa-thumbs-o-up"></i>{{item.likes}}</span>
+                                <span><i class="fa fa-eye"></i>{{item.views}}</span>
+                                <span><i class="fa fa-comment-o"></i>20</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Shows the MAP page-->
+        <div class="row" ng-show="visibility.map">
+            <h1>Map goes here</h1>
+        </div>
+
+        <!--Shows the Profile-->
+        <div class="row" ng-show="visibility.profile">
+            <div class="col-xs-12 col-md-4 left-feild">
+                <div class="be-user-block style-3">
+                    <div class="be-user-detail">
+                        <a class="be-ava-user style-2" href="page1.html">
+                            <img src="img/ava_10.jpg" alt="">
+                        </a>
+                        <a class="be-ava-left btn color-1 size-2 hover-1" href="author-edit.html"><i
+                                class="fa fa-pencil"></i>Edit</a>
+                        <div class="be-ava-right btn btn-share color-4 size-2 hover-7">
+                            <i class="fa fa-share-alt"></i>share
+                            <div class="share-buttons">
+                                <a class="color-1" href="page1.html"><i class="fa fa-facebook"></i> 278</a>
+                                <a class="color-2" href="page1.html"><i class="fa fa-twitter"></i> 180</a>
+                                <a class="color-3" href="page1.html"><i class="fa fa-pinterest-p"></i> 78</a>
+                                <a class="color-4" href="page1.html"><i class="fa fa-linkedin"></i> 53</a>
+                            </div>
+                        </div>
+                        <p class="be-use-name">Leigh Taylor</p>
+                        <div class="be-user-info">
+                            Barnsley, United Kingdom
+                        </div>
+                        <div class="be-text-tags style-2">
+                            <a href="page1.html">UI/UX</a>,
+                            <a href="page1.html">Web Design</a>,
+                            <a href="page1.html">Art Direction</a>
+                        </div>
+                        <div class="be-user-social">
+                            <a class="social-btn color-1" href="page1.html"><i class="fa fa-facebook"></i></a>
+                            <a class="social-btn color-2" href="page1.html"><i class="fa fa-twitter"></i></a>
+                            <a class="social-btn color-3" href="page1.html"><i class="fa fa-google-plus"></i></a>
+                            <a class="social-btn color-4" href="page1.html"><i class="fa fa-pinterest-p"></i></a>
+                            <a class="social-btn color-5" href="page1.html"><i class="fa fa-instagram"></i></a>
+                            <a class="social-btn color-6" href="page1.html"><i class="fa fa-linkedin"></i></a>
+                        </div>
+                        <a class="be-user-site" href="http://www.phoenix.cool"><i class="fa fa-link"></i>
+                            www.phoenix.cool</a>
+                    </div>
+                    <div class="be-user-statistic">
+                        <div class="stat-row clearfix"><i class="stat-icon icon-views-b"></i> Projects views<span
+                                class="stat-counter">218098</span></div>
+                        <div class="stat-row clearfix"><i class="stat-icon icon-like-b"></i>Appreciations<span
+                                class="stat-counter">14335</span></div>
+                        <div class="stat-row clearfix"><i class="stat-icon icon-followers-b"></i>Followers<span
+                                class="stat-counter">2208</span></div>
+                        <div class="stat-row clearfix"><i class="stat-icon icon-following-b"></i>Following<span
+                                class="stat-counter">0</span></div>
+                    </div>
+                </div>
+                <div class="be-desc-block">
+                    <div class="be-desc-author">
+                        <div class="be-desc-label">About Me</div>
+                        <div class="clearfix"></div>
+                        <div class="be-desc-text">
+                            Nam sit amet massa commodo, tristique metus at, consequat turpis. In vulputate justo at
+                            auctor mollis. Aliquam non sagittis tortor. Duis tristique suscipit risus, quis facilisis
+                            nisl congue vitae. Nunc varius pellentesque scelerisque. Etiam quis massa vitae lectus
+                            placerat ullamcorper pellentesque vel nisl.
+                        </div>
+                    </div>
+                    <div class="be-desc-author">
+                        <div class="be-desc-label">My Values</div>
+                        <div class="clearfix"></div>
+                        <div class="be-desc-text">
+                            Sed dignissim scelerisque pretium. Vestibulum vel lacus laoreet nunc fermentum maximus.
+                            Proin id sodales sem, at consectetur urna. Proin vestibulum, erat a hendrerit sodales, nulla
+                            libero ornare dolor.
+                        </div>
+                    </div>
+                </div>
+                <a class="btn full color-1 size-1 hover-1"><i class="fa fa-plus" ng-click="showUploadPage()"></i>Upload</a>
+            </div>
+
+            <div class="col-xs-12 col-md-8">
+                <div class="tab-wrapper style-1">
+                    <div class="tab-nav-wrapper">
+                        <div class="nav-tab  clearfix">
+                            <div class="nav-tab-item active">
+                                <span>Gallery</span>
+                            </div>
+                            <div class="nav-tab-item ">
+                                <span>Most Viewed Photosphere</span>
+                            </div>
+                            <div class="nav-tab-item ">
+                                <span>Most Liked Photosphere</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Shows the most liked photosphere-->
+                    <div class="tabs-content clearfix">
+
+                        <div class="tab-info active">
+                            <div class="row" ng-if="newsFeedLoaded">
+                                <div class="col-ml-12 col-xs-6 col-sm-4" ng-repeat="item in newsfeedItems"
+                                     ng-if="item['user_id']==='1'">
+                                    <div class="be-post">
+                                        <a href="" class="be-img-block" ng-click="openPhotosphere(item)">
+                                            <img src="./img/display_img/{{item.photo_id}}" alt="omg">
+                                        </a>
+                                        <a href="" class="be-post-title">{{item.name}}</a>
+                                        <span>
+                                            <a href="" class="be-post-tag">Interaction Design</a>,
+                                            <a href="" class="be-post-tag">UI/UX</a>,
+                                            <a href="" class="be-post-tag">Web Design</a>
+                                        </span>
+                                        <div class="author-post">
+                                            <img src="img/a1.png" alt="" class="ava-author">
+                                            <span>by <a href="page1.html">{{item.user_name}}</a></span>
+                                        </div>
+                                        <div class="info-block">
+                                            <span><i class="fa fa-thumbs-o-up"></i>{{item.likes}}</span>
+                                            <span><i class="fa fa-eye"></i>{{item.views}}</span>
+                                            <span><i class="fa fa-comment-o"></i>20</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-info">
+                            <div class="row">
+                                <div class="col-ml-12 col-xs-6 col-sm-4">
+                                    <div class="be-post">
+                                        <a href="page1.html" class="be-img-block">
+                                            <img src="img/p8.jpg" alt="omg">
+                                        </a>
+                                        <a href="page1.html" class="be-post-title">Racing Queensland</a>
+                                        <span>
+												<a href="page1.html" class="be-post-tag">Interaction Design</a>,
+												<a href="page1.html" class="be-post-tag">UI/UX</a>,
+												<a href="page1.html" class="be-post-tag">Web Design</a>
+											</span>
+                                        <div class="author-post">
+                                            <img src="img/a7.png" alt="" class="ava-author">
+                                            <span>by <a href="page1.html">Hoang Nguyen</a></span>
+                                        </div>
+                                        <div class="info-block">
+                                            <span><i class="fa fa-thumbs-o-up"></i> 360</span>
+                                            <span><i class="fa fa-eye"></i> 789</span>
+                                            <span><i class="fa fa-comment-o"></i> 20</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Shows the most viewed photosphere-->
+                        <div class="tab-info">
+                            <div class="row">
+                                <div class="col-ml-12 col-xs-6 col-sm-4">
+                                    <div class="be-post style-4">
+                                        <a href="page1.html" class="be-img-block">
+                                            <img src="img/p16.jpg" alt="omg">
+                                        </a>
+                                        <a href="page1.html" class="be-post-title">Wisdom For My Children, Life Lessons
+                                            Through</a>
+
+                                        <div class="author-post clearfix">
+                                            <img src="img/a1.png" alt="" class="ava-author">
+                                            <span>by <a href="page1.html">Hoang Nguyen</a></span>
+                                            <span class="like-counter"><i class="fa fa-thumbs-o-up"></i> 405</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--<div class="tab-info">
+                            <div class="collection">
+                                <h3 class="menu-article">Creative Ideas</h3>
+                                <div class="collection-header">
+                                    <span><i class="fa fa-user"></i>by <a href="page1.html">Leigh Taylor</a> </span>
+                                    <span><i class="fa fa-thumbs-o-up"></i> 360</span>
+                                    <span><i class="fa fa-eye"></i> 789</span>
+                                    <div class="edit-collection">
+                                        <i class="fa fa-pencil"></i>
+                                        <div class="c_edit">
+                                            <div class="btn-rename">
+                                                rename
+                                                <div class="message-popup">
+                                                    <div class="message-popup-inner container">
+                                                        <div class="row">
+                                                            <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+                                                                <i class="fa fa-times close-button"></i>
+                                                                <h5 class="large-popup-title">Rename</h5>
+                                                                <div class="form-group">
+                                                                    <input class="form-input" required=""
+                                                                           placeholder="Your text">
+                                                                </div>
+                                                                <button class="btn btn-right color-1 size-1 hover-1">
+                                                                    OK
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <a href="page1.html">delete</a>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="collection-entry">
+                                    <a href="page1.html" class="portfolio-link type-2 clearfix">
+                                        <img src="img/collection_1.jpg" alt="">
+                                        <img src="img/collection_2.jpg" alt="">
+                                        <img src="img/collection_3.jpg" alt="">
+                                        <img src="img/collection_4.jpg" alt="">
+                                        <img src="img/collection_5.jpg" alt="">
+                                        <div class="color_bg">
+                                            <span>view gallery</span>
+                                            <span class="child"></span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="collection">
+                                <h3 class="menu-article">Creative Agency</h3>
+                                <div class="collection-header">
+                                    <span><i class="fa fa-user"></i>by <a href="page1.html">Leigh Taylor</a> </span>
+                                    <span><i class="fa fa-thumbs-o-up"></i> 360</span>
+                                    <span><i class="fa fa-eye"></i> 789</span>
+                                    <div class="edit-collection">
+                                        <i class="fa fa-pencil"></i>
+                                        <div class="c_edit">
+                                            <div class="btn-rename">
+                                                rename
+                                                <div class="message-popup">
+                                                    <div class="message-popup-inner container">
+                                                        <div class="row">
+                                                            <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+                                                                <i class="fa fa-times close-button"></i>
+                                                                <h5 class="large-popup-title">Rename</h5>
+                                                                <div class="form-group">
+                                                                    <input class="form-input" required=""
+                                                                           placeholder="Your text">
+                                                                </div>
+                                                                <button class="btn btn-right color-1 size-1 hover-1">
+                                                                    OK
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <a href="page1.html">delete</a>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="collection-entry">
+                                    <a href="page1.html" class="portfolio-link type-2 clearfix">
+                                        <img src="img/collection_6.jpg" alt="">
+                                        <img src="img/collection_7.jpg" alt="">
+                                        <img src="img/collection_8.jpg" alt="">
+                                        <img src="img/collection_9.jpg" alt="">
+                                        <img src="img/collection_10.jpg" alt="">
+                                        <div class="color_bg">
+                                            <span>view gallery</span>
+                                            <span class="child"></span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="collection">
+                                <h3 class="menu-article">Creative Agency</h3>
+                                <div class="collection-header">
+                                    <span><i class="fa fa-user"></i>by <a href="page1.html">Inspiration Art</a> </span>
+                                    <span><i class="fa fa-thumbs-o-up"></i> 360</span>
+                                    <span><i class="fa fa-eye"></i> 789</span>
+                                    <div class="edit-collection">
+                                        <i class="fa fa-pencil"></i>
+                                        <div class="c_edit">
+                                            <div class="btn-rename">
+                                                rename
+                                                <div class="message-popup">
+                                                    <div class="message-popup-inner container">
+                                                        <div class="row">
+                                                            <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+                                                                <i class="fa fa-times close-button"></i>
+                                                                <h5 class="large-popup-title">Rename</h5>
+                                                                <div class="form-group">
+                                                                    <input class="form-input" required=""
+                                                                           placeholder="Your text">
+                                                                </div>
+                                                                <button class="btn btn-right color-1 size-1 hover-1">
+                                                                    OK
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <a href="page1.html">delete</a>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="collection-entry">
+                                    <a href="page1.html" class="portfolio-link type-2 clearfix">
+                                        <img src="img/collection_11.jpg" alt="">
+                                        <img src="img/collection_12.jpg" alt="">
+                                        <img src="img/collection_13.jpg" alt="">
+                                        <img src="img/collection_14.jpg" alt="">
+                                        <img src="img/collection_15.jpg" alt="">
+                                        <div class="color_bg">
+                                            <span>view gallery</span>
+                                            <span class="child"></span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="collection">
+                                <h3 class="menu-article">Ideas For Personal Site</h3>
+                                <div class="collection-header">
+                                    <span><i class="fa fa-user"></i>by <a href="page1.html">Inspiration Art</a> </span>
+                                    <span><i class="fa fa-thumbs-o-up"></i> 360</span>
+                                    <span><i class="fa fa-eye"></i> 789</span>
+                                    <div class="edit-collection">
+                                        <i class="fa fa-pencil"></i>
+                                        <div class="c_edit">
+                                            <div class="btn-rename">
+                                                rename
+                                                <div class="message-popup">
+                                                    <div class="message-popup-inner container">
+                                                        <div class="row">
+                                                            <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+                                                                <i class="fa fa-times close-button"></i>
+                                                                <h5 class="large-popup-title">Rename</h5>
+                                                                <div class="form-group">
+                                                                    <input class="form-input" required=""
+                                                                           placeholder="Your text">
+                                                                </div>
+                                                                <button class="btn btn-right color-1 size-1 hover-1">
+                                                                    OK
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <a href="page1.html">delete</a>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="collection-entry">
+                                    <a href="page1.html" class="portfolio-link type-2 clearfix">
+                                        <img src="img/collection_16.jpg" alt="">
+                                        <img src="img/collection_17.jpg" alt="">
+                                        <img src="img/collection_18.jpg" alt="">
+                                        <img src="img/collection_19.jpg" alt="">
+                                        <img src="img/collection_20.jpg" alt="">
+                                        <div class="color_bg">
+                                            <span>view gallery</span>
+                                            <span class="child"></span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="collection">
+                                <h3 class="menu-article">Inspiration Photos</h3>
+                                <div class="collection-header">
+                                    <span><i class="fa fa-user"></i>by <a href="page1.html">Inspiration Art</a> </span>
+                                    <span><i class="fa fa-thumbs-o-up"></i> 360</span>
+                                    <span><i class="fa fa-eye"></i> 789</span>
+                                    <div class="edit-collection">
+                                        <i class="fa fa-pencil"></i>
+                                        <div class="c_edit">
+                                            <div class="btn-rename">
+                                                rename
+                                                <div class="message-popup">
+                                                    <div class="message-popup-inner container">
+                                                        <div class="row">
+                                                            <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+                                                                <i class="fa fa-times close-button"></i>
+                                                                <h5 class="large-popup-title">Rename</h5>
+                                                                <div class="form-group">
+                                                                    <input class="form-input" required=""
+                                                                           placeholder="Your text">
+                                                                </div>
+                                                                <button class="btn btn-right color-1 size-1 hover-1">
+                                                                    OK
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <a href="page1.html">delete</a>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="collection-entry">
+                                    <a href="page1.html" class="portfolio-link type-2 clearfix">
+                                        <img src="img/collection_6.jpg" alt="">
+                                        <img src="img/collection_10.jpg" alt="">
+                                        <img src="img/collection_8.jpg" alt="">
+                                        <img src="img/collection_11.jpg" alt="">
+                                        <img src="img/collection_3.jpg" alt="">
+                                        <div class="color_bg">
+                                            <span>view gallery</span>
+                                            <span class="child"></span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>-->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Shows the upload page-->
+        <div class="row" ng-show="visibility.upload">
+            <div class="input-col col-xs-12">
+                <div class="form-group focus-2">
+                    <div class="form-label">Company</div>
+                    <input class="form-input" type="text" placeholder="">
+                </div>
+            </div>
+        </div>
+
+        <div class="row" ng-show="visibility.viewPhotosphere">
+                <a-scene>
+                    <a-sky src="{{currentPhotosphere}}"></a-sky>
+                </a-scene>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>

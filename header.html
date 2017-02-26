@@ -1,0 +1,28 @@
+<header>
+    <div class="container-fluid custom-container">
+        <div class="row no_row row-header">
+            <div class="brand-be">
+                <a ng-click="showMainContent()">
+                    <img class="logo-c active be_logo" src="img/colombo360_logo.png" alt="logo"
+                         style="width: 100px; height: 70px; margin-top:-15px">
+                </a>
+            </div>
+            <div class="header-menu-block">
+                <button class="cmn-toggle-switch cmn-toggle-switch__htx"><span></span></button>
+                <ul class="header-menu" id="one">
+                    <!--<li><a href="activity.html">Activity</a></li>-->
+                    <li><a href="#/map">Explore</a>
+                    </li>
+                    <li><a href="#/profile">My Portfolio</a></li>
+                    <li id="ad-work-li"><a id="add-work-btn" class="btn btn-danger"
+                                           ng-click="openPhotosphereUploadPage()">Upload Content</a></li>
+                </ul>
+            </div>
+            <div class="login-header-block">
+                <div class="login_block">
+                    <a class="btn-login btn color-1 size-2 hover-2" href=""><i class="fa fa-user"></i>{{loginButtonText}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

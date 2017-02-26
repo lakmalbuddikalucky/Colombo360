@@ -1,0 +1,41 @@
+<div>
+<header>
+    <ul class="nav nav-tabs">
+        <li><a ng-click="showMainContent()" style="width: 30%;">Home</a></li> <!--href="#/"-->
+        <li><a ng-click="showProfile()" style="width: 30%">Profile</a></li> <!--href=#/profile"-->
+        <li><a ng-click="showMap()" style="width: 30%">Explore</a></li> <!--href="#/map"-->
+        <a ng-click="showMainContent()">
+            <img class="logo-c active be_logo" src="img/colombo360_logo.png" alt="logo"
+                 style="width: 50px; height: 35px;float: right">
+        </a>
+    </ul>
+</header>
+
+    <div class="category-1 mix custom-column-5" ng-repeat="item in newsfeedItems">
+                    <div class="be-post">
+                        <a href="" class="be-img-block" ng-click="openPhotosphere(item)">
+                            <img src="./img/display_img/{{item.photo_id}}" alt="omg">
+                        </a>
+                        <a href="" class="be-post-title">{{item.name}}</a>
+                        <span>
+                                <a href="" class="be-post-tag">Interaction Design</a>,
+                                <a href="" class="be-post-tag">UI/UX</a>,
+                                <a href="" class="be-post-tag">Web Design</a>
+                            </span>
+                        <div class="author-post">
+                            <img src="img/a1.png" alt="" class="ava-author">
+                            <span>by <a href="page1.html">{{item.user_name}}</a></span>
+                        </div>
+                        <div class="info-block">
+                            <span><i class="fa fa-thumbs-o-up"></i>{{item.likes}}</span>
+                            <span><i class="fa fa-eye"></i>{{item.views}}</span>
+                            <span><i class="fa fa-comment-o"></i>20</span>
+                        </div>
+                    </div>
+                </div>
+
+<div id="content-block">
+    <div class="container-fluid custom-container">
+    </div>
+</div>
+</div>

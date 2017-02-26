@@ -1,0 +1,20 @@
+<header>
+    <ul class="nav nav-tabs">
+        <li><a ng-click="showMainContent()" style="width: 30%;">Home</a></li> <!--href="#/"-->
+        <li><a ng-click="showProfile()" style="width: 30%">Profile</a></li> <!--href=#/profile"-->
+        <li><a ng-click="showMap()" style="width: 30%">Explore</a></li> <!--href="#/map"-->
+        <a ng-click="showMainContent()">
+            <img class="logo-c active be_logo" src="img/colombo360_logo.png" alt="logo"
+                 style="width: 50px; height: 35px;float: right">
+        </a>
+    </ul>
+</header>
+
+<div id="content-block">
+    <div class="container-fluid custom-container">
+        <a-scene>
+            <a-sky src="{{currentPhotosphere}}"></a-sky>
+        </a-scene>
+    </div>
+    <h4>sdsd</h4>
+</div>
