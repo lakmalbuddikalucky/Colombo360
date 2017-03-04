@@ -23,6 +23,17 @@ if ($request['query'] === "checkUserExist") {
     $dataToSend = $GLOBALS[connection]->checkUserExist($request['data']);
 }
 
+//The query used to fetch Map Points
+if($request['query'] === "getMapPoints"){
+
+    $dataToSend = $GLOBALS['connection']->getMapPoints();
+}
+
+//The query used to fetch Map Points
+if($request['query'] === "getPhotosphereDetails"){
+    $dataToSend = $GLOBALS['connection']->getPhotosphereDetails($request['data']['id']);
+}
+
 //The query to get items from the news feed
 if($request['query'] === "getNewsfeedItems"){
     $dataToSend = $GLOBALS[connection]->getNewsfeedItems();

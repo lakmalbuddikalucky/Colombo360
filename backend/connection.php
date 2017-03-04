@@ -54,4 +54,14 @@ class connection
         return $this->connection->query("SELECT * FROM `photosphere` ORDER BY `id` DESC")->fetchAll();
     }
 
+    function getMapPoints()
+    {
+        return $this->connection->query("SELECT `photo_lat`,`photo_lng` ,`id` FROM `photosphere` WHERE `photo_lat` IS NOT NULL;")->fetchAll();
+    }
+
+    function getPhotosphereDetails($id)
+    {
+        return $this->connection->query("SELECT * FROM `photosphere` WHERE `id` = '".$id."'")->fetchAll();
+    }
+
 }

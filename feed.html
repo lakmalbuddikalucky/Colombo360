@@ -1,41 +1,75 @@
-<div>
-<header>
-    <ul class="nav nav-tabs">
-        <li><a ng-click="showMainContent()" style="width: 30%;">Home</a></li> <!--href="#/"-->
-        <li><a ng-click="showProfile()" style="width: 30%">Profile</a></li> <!--href=#/profile"-->
-        <li><a ng-click="showMap()" style="width: 30%">Explore</a></li> <!--href="#/map"-->
-        <a ng-click="showMainContent()">
-            <img class="logo-c active be_logo" src="img/colombo360_logo.png" alt="logo"
-                 style="width: 50px; height: 35px;float: right">
-        </a>
-    </ul>
-</header>
+<div id="feed" name="feed" ng-init="reloadThePage()">
+    <header>
+        <ul class="nav nav-tabs">
+            <li><a ng-click="showMainContent()" style="width: 30%;">Home</a></li> <!--href="#/"-->
+            <li><a ng-click="showProfile()" style="width: 30%">Profile</a></li> <!--href=#/profile"-->
+            <li><a ng-click="showMap()" style="width: 30%">Explore</a></li> <!--href="#/map"-->
+            <a ng-click="showMainContent()">
+                <img class="logo-c active be_logo" src="img/colombo360_logo.png" alt="logo"
+                     style="width: 50px; height: 35px;float: right;margin-right: 5%">
+            </a>
+        </ul>
+    </header>
+    <br><br><br>
 
-    <div class="category-1 mix custom-column-5" ng-repeat="item in newsfeedItems">
-                    <div class="be-post">
-                        <a href="" class="be-img-block" ng-click="openPhotosphere(item)">
-                            <img src="./img/display_img/{{item.photo_id}}" alt="omg">
-                        </a>
-                        <a href="" class="be-post-title">{{item.name}}</a>
-                        <span>
-                                <a href="" class="be-post-tag">Interaction Design</a>,
-                                <a href="" class="be-post-tag">UI/UX</a>,
-                                <a href="" class="be-post-tag">Web Design</a>
+    <div id="floating-button"  data-placement="left" data-original-title="Create" ng-click="showUploadPage()">
+        <p class="plus">+</p>
+        <img class="edit" src="http://ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/1x/bt_compose2_1x.png">
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-md-8">
+            <div class="tab-wrapper style-1">
+                <div class="row" ng-if="newsFeedLoaded">
+                    <div class="col-ml-12 col-xs-6 col-sm-4" ng-repeat="item in newsfeedItems">
+                        <div class="be-post">
+                            <a href="" class="be-img-block" ng-click="openPhotosphere(item)">
+                                <img src="./img/display_img/{{item.photo_id}}" alt="omg">
+                            </a>
+                            <a href="" class="be-post-title">{{item.name}}</a>
+                            <span>
+                                <a href="" class="be-post-tag">{{item.description}}</a>
                             </span>
-                        <div class="author-post">
-                            <img src="img/a1.png" alt="" class="ava-author">
-                            <span>by <a href="page1.html">{{item.user_name}}</a></span>
-                        </div>
-                        <div class="info-block">
-                            <span><i class="fa fa-thumbs-o-up"></i>{{item.likes}}</span>
-                            <span><i class="fa fa-eye"></i>{{item.views}}</span>
-                            <span><i class="fa fa-comment-o"></i>20</span>
+                            <div class="author-post">
+                                <img src="img/a1.png" alt="" class="ava-author">
+                                <span>by <a href="page1.html">{{item.user_name}}</a></span>
+                            </div>
+                            <div class="info-block">
+                                <span><i class="fa fa-thumbs-o-up"></i>{{item.likes}}</span>
+                                <span><i class="fa fa-eye"></i>{{item.views}}</span>
+                                <span><i class="fa fa-comment-o"></i>20</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-<div id="content-block">
-    <div class="container-fluid custom-container">
+            </div>
+        </div>
     </div>
-</div>
+    <!--<div class="category-1 mix custom-column-5" ng-repeat="item in newsfeedItems">
+        <div class="be-post">
+            <a href="" class="be-img-block" ng-click="openPhotosphere(item)">
+                <img src="./img/display_img/{{item.photo_id}}" alt="omg">
+            </a>
+            <a href="" class="be-post-title">{{item.name}}</a>
+            <span>
+                <a href="" class="be-post-tag">Interaction Design</a>,
+                <a href="" class="be-post-tag">UI/UX</a>,
+                <a href="" class="be-post-tag">Web Design</a>
+            </span>
+            <div class="author-post">
+                <img src="img/a1.png" alt="" class="ava-author">
+                <span>by <a href="page1.html">{{item.user_name}}</a></span>
+            </div>
+            <div class="info-block">
+                <span><i class="fa fa-thumbs-o-up"></i>{{item.likes}}</span>
+                <span><i class="fa fa-eye"></i>{{item.views}}</span>
+                <span><i class="fa fa-comment-o"></i>20</span>
+            </div>
+        </div>
+    </div>-->
+
+    <div id="content-block" scrolling="yes">
+        <div class="container-fluid custom-container">
+        </div>
+    </div>
 </div>

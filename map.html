@@ -1,1 +1,22 @@
-<h4>This is map</h4>
+<header>
+    <ul class="nav nav-tabs">
+        <li><a ng-click="showMainContent()" style="width: 30%;">Home</a></li> <!--href="#/"-->
+        <li><a ng-click="showProfile()" style="width: 30%">Profile</a></li> <!--href=#/profile"-->
+        <li><a ng-click="showMap()" style="width: 30%">Explore</a></li> <!--href="#/map"-->
+        <a ng-click="showMainContent()">
+            <img class="logo-c active be_logo" src="img/colombo360_logo.png" alt="logo"
+                 style="width: 50px; height: 35px;float: right;margin-right: 5%">
+        </a>
+    </ul>
+</header>
+<br>
+<div ng-controller="AppController" name="MapContainer">
+    <h4>This is map</h4>
+
+    <div map-lazy-load="https://maps.google.com/maps/api/js"
+         map-lazy-load-params="{{googleMapsUrl}}">
+        <ng-map center="41,-87" zoom="3" style="height: 1200px;width: 100%"></ng-map>
+    </div>
+
+</div>
+
